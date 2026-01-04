@@ -1,0 +1,2 @@
+[console_scripts]
+talk-to-claude = talk_to_claude.main:main

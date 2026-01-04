@@ -1,0 +1,23 @@
+# Audio capture
+sounddevice>=0.4.6
+numpy>=1.24.0
+
+# Speech-to-text
+deepgram-sdk>=3.0.0
+
+# iTerm2 automation
+iterm2>=2.7
+
+# Configuration
+pyyaml>=6.0
+python-dotenv>=1.0.0
+
+# Async utilities
+aiofiles>=23.0.0
+websockets>=12.0
+
+# Process management
+psutil>=5.9.0
+
+# macOS UI overlay
+pyobjc-framework-Cocoa>=10.0
