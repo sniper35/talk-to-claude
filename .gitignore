@@ -1,6 +1,10 @@
 # macOS
 .DS_Store
 
+# Temporary/working files
+refactoring-01-03.txt
+compacted-then-fix.txt
+
 # Credentials - NEVER commit
 config.yaml
 
