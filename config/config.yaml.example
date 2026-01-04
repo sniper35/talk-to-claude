@@ -1,0 +1,64 @@
+# Talk to Claude Configuration
+#
+# API Keys: Create ~/.claude_voice_api.json with your API keys:
+#   {
+#     "deepgram": "your-deepgram-api-key",
+#     "elevenlabs": "your-elevenlabs-api-key",
+#     "openai": "your-openai-api-key"
+#   }
+# Only need the key for your selected service below.
+# Fallback: Environment variables (DEEPGRAM_API_KEY, ELEVENLABS_API_KEY, OPENAI_API_KEY)
+
+transcription:
+  # Service to use: deepgram, elevenlabs, or openai
+  service: openai
+  interim_results: true  # Enable live transcript
+
+  # Deepgram-specific settings
+  deepgram:
+    model: nova-2-general
+    language: en-US
+    smart_format: true
+    utterance_end_ms: 1000
+
+  # ElevenLabs-specific settings
+  elevenlabs:
+    model: scribe_v1
+    language_code: en
+
+  # OpenAI transcription settings
+  openai:
+    # Model options: gpt-4o-transcribe (best quality), gpt-4o-mini-transcribe (faster), whisper-1 (legacy)
+    model: gpt-4o-transcribe
+    language: en
+    # Transcription interval (gpt-4o models support native streaming, whisper-1 uses pseudo-streaming)
+    transcription_interval_ms: 2000  # How often to transcribe buffered audio
+    min_audio_length_ms: 500  # Minimum audio length before transcription
+
+audio:
+  sample_rate: 16000
+  channels: 1
+  chunk_duration_ms: 100
+
+feedback:
+  show_live_transcript: true
+  overlay:
+    position: top-right  # Options: top-left, top-right, bottom-left, bottom-right
+    default_width: 400
+    default_height: 60
+    default_opacity: 0.8
+    min_width: 200
+    min_height: 40
+    remember_position: true
+
+commands:
+  end_voice_phrase: "end voice"
+  window_activation_patterns:
+    - "activate {position} window"
+    - "go to {position} pane"
+    - "switch to {position}"
+
+daemon:
+  pid_file: ~/.talk-to-claude/daemon.pid
+  log_file: ~/.talk-to-claude/daemon.log
+  socket_path: ~/.talk-to-claude/daemon.sock

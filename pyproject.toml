@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "talk-to-claude"
+version = "0.1.0"
+description = "Voice-to-text interface for Claude Code terminals in iTerm2"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "you@example.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: MacOS X",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: User Interfaces",
+]
+dependencies = [
+    "sounddevice>=0.4.6",
+    "numpy>=1.24.0",
+    "deepgram-sdk>=3.0.0",
+    "iterm2>=2.7",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+    "aiofiles>=23.0.0",
+    "psutil>=5.9.0",
+    "pyobjc-framework-Cocoa>=10.0",
+    # Additional transcription providers
+    "websockets>=12.0",  # For ElevenLabs WebSocket streaming
+    "openai>=1.0.0",  # For OpenAI Whisper API
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.scripts]
+talk-to-claude = "talk_to_claude.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
